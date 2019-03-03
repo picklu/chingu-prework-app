@@ -11,8 +11,8 @@ const port = process.env.PORT || 5000;
 
 // Connect to the database
 const authData = {
-    name: process.env.DB_USER,
-    password: process.env.DB_PASS,
+    user: process.env.DB_USER,
+    pass: process.env.DB_PASS,
     useNewUrlParser: true
 };
 
