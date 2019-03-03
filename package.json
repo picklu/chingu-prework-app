@@ -7,8 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Subrata Sarker",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/picklu/chingu-prework-app.git"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "dotenv": "^6.2.0",
