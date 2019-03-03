@@ -35,6 +35,9 @@ app.use(helmet());
 //  Pase incoming request bodies in a middleware
 app.use(bodyParser.json());
 
+// Set the static path
+app.use('/static', express.static(path.join(__dirname, '../client/static')));
+
 // Set the routes
 app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));

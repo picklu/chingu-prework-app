@@ -8,7 +8,11 @@ Full-stack responsive app for *Chingu* prework.
 ### File Structure
     .
     ├───client
-    │     └───index.html
+    │     ├───index.html
+    │     ├───css
+    │     │    └───style.js 
+    │     └───js
+    │          └───script.js  
     ├───node_modules/*
     ├───server
     │     ├───controllers
