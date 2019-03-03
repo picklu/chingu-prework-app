@@ -15,8 +15,9 @@ Full-stack responsive app for *Chingu* prework.
     │     │      └───contollers.js     
     │     ├───models
     │     │      └───books.js 
-    │     └───routes
-    │            └───routes.js 
+    │     ├───routes
+    │     │       └───routes.js 
+    │     └───server.js 
     ├───.env*
     ├───.gitignore
     ├───.jshintrc

@@ -37,7 +37,7 @@ app.use(bodyParser.json());
 
 // Set the routes
 app.get('/', (req, res, next) => {
-    res.send("Hello, Express Route!");
+    res.sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 // Set the api routes
