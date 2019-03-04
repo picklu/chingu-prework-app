@@ -1,10 +1,16 @@
 {
   "name": "chingu-prework-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "Full-stack web app built with node.js, express.js, node-sass and google books API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "watch:sass": "node-sass client/sass/main.scss client/static/css/style.css -w",
+    "devserver": "nodemon --inspect server/server.js",
+    "start": "npm-run-all --parallel devserver watch:sass",
+    "compile:sass": "node-sass client/sass/main.scss client/static/css/style.comp.css",
+    "prefix:css": "postcss client/static/css/style.comp.css -u autoprefixer -o client/static/css/style.prefix.css",
+    "compress:css": "node-sass client/static/css/style.prefix.css client/static/css/style.css --output-style compressed",
+    "build:css": "npm-run-all compile:sass prefix:css compress:css"
   },
   "keywords": [],
   "author": "Subrata Sarker",
@@ -20,5 +26,10 @@
     "helmet": "^3.15.1",
     "mongoose": "^5.4.16"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "autoprefixer": "^9.4.9",
+    "node-sass": "^4.11.0",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^6.1.2"
+  }
 }

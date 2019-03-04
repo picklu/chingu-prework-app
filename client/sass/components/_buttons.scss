@@ -1,0 +1,36 @@
+.btn {
+    border: none;
+
+    &:focus,
+    &:active {
+        outline: none;
+    }
+
+    &__form {
+        background-color: darken($color-secondary, 10);
+        border-radius: 5px;
+        box-shadow: 0 1px 2px $color-black;
+        color: inherit;
+        display: block;
+        font-size: 2.5rem;
+        font-weight: 600;
+        padding: 1rem 2rem;
+        text-transform: uppercase;
+        text-shadow: 0 0 2px $color-grey;
+        margin: 0;
+        transition: all .3s;
+
+        @include respond(tablet-port) {
+            width: 100%;
+        }
+
+        &:hover {
+            color: $color-white;
+        }
+
+        &:focus {
+            box-shadow: 0 0 2px $color-black;
+            transform: translateY(3px);
+        }
+    }
+}
