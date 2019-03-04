@@ -2,18 +2,39 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
+        <meta name="author" content="Subrata Sarker">
+        <meta name="application-name" content="chingu books">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Chingu Books</title>
-        <!-- stylesheets -->
         <link rel="stylesheet" href="/static/css/style.css">
     </head>
     <body>
-        <h1>Chingu Books</h1>
+        <header class="header">
+            <h1>Chingu Book Finder</h1>
+            <form class="form" action="#">
+                <div class="row form__row">
+                    <div class="form__group form__group--input">
+                        <input type="text" class="form__control--input" placeholder="Learn to code with Chingu">
+                    </div>
+                    <div class="form__group form__group--btn">
+                        <button type="submit" class="btn btn__form form__control--btn">Search</button>
+                    </div>
+                </div>
+            </form>
 
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, sequi ipsa eum debitis dolore laboriosam error. Sunt cumque nulla quo quidem molestiae iusto tempore, mollitia aperiam eos vero dolor voluptas.</p>
+            <div id="result" class="result"></div>
+        </header>
 
-        <button id="hi">Click Me!</button>
+        <main id="books" class="books">
+        </main>
+        
+        <footer class="footer">
+            <div class="footer__row">
+                <p class="footer__text">Built with &hearts; by Subrata Sarker</p>
+                <small class="footer__copy">&copy; Chingu Books 2019</small>
+            </div>
+        </footer>
         
         <!-- javascripts -->
         <script src="/static/js/script.js"></script>
