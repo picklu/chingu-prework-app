@@ -58,7 +58,7 @@ em {
         width: 100%; } }
     .btn__form:hover {
       color: #ffffffee; }
-    .btn__form:focus {
+    .btn__form:active {
       color: inherit; }
 
 .header,
