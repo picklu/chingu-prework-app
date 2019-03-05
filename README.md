@@ -3,7 +3,7 @@
 Full-stack responsive app for *Chingu* prework.
 
 - [Repository](https://github.com/picklu/chingu-prework-app)
-- [Website](https://picklu.github.io/chingu-prework-app)
+- [Website](http://ec2-52-32-211-146.us-west-2.compute.amazonaws.com)
 
 ### File Structure
     .
