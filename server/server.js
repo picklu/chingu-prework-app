@@ -46,6 +46,20 @@ app.get('/', (req, res, next) => {
 // Set the api routes
 app.use('/api', routes);
 
+app.use((req, res, next) => {
+    res.status(404);
+
+    if (req.accepts('html')) {
+        res.render('404', { url: req.url });
+    }
+
+    if (req.accepts('json')) {
+        res.send({ erro: 'Not found!' });
+    }
+
+    res.type('txt').send('Not found!');
+});
+
 app.use((err, req, res, next) => {
     console.log(err);
 });
