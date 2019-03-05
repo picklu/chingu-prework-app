@@ -43,7 +43,6 @@ em {
   .btn__form {
     background-color: #145386;
     border-radius: 5px;
-    box-shadow: 0 2px 3px #090533;
     color: inherit;
     display: block;
     font-size: 2.5rem;
@@ -64,7 +63,7 @@ em {
 .header,
 .books,
 .footer {
-  color: #090533;
+  color: #0d074e;
   font-size: 1.6rem;
   min-width: 300px;
   padding: 2rem 20vw 2rem 20vw; }
@@ -88,6 +87,8 @@ em {
   padding-top: 3rem;
   padding-bottom: 2rem; }
   .form__row {
+    border-radius: 5px;
+    box-shadow: 0 1px 2px #0d074e;
     display: flex;
     flex-wrap: wrap; }
   .form__group {
@@ -97,7 +98,6 @@ em {
       flex: 1; }
   .form__control--input {
     border-radius: 5px 0 0 5px;
-    box-shadow: 0 1px 2px #090533;
     color: inherit;
     display: block;
     font-size: 2rem;
@@ -105,6 +105,7 @@ em {
     padding: 1.1rem 2rem;
     width: 100%; }
   .form__control--btn {
+    border-bottom: 2px solid #145386;
     border-radius: 0 5px 5px 0; }
 
 .row {
