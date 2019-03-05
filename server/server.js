@@ -46,22 +46,17 @@ app.get('/', (req, res, next) => {
 // Set the api routes
 app.use('/api', routes);
 
+// 404 Error
 app.use((req, res, next) => {
-    res.status(404);
-
-    if (req.accepts('html')) {
-        res.render('404', { url: req.url });
-    }
-
-    if (req.accepts('json')) {
-        res.send({ erro: 'Not found!' });
-    }
-
-    res.type('txt').send('Not found!');
+    console.log('File or directory:', req.url, 'not foud!');
+    res.status(404).sendFile(path.join(__dirname, '../client/404.html'));
 });
 
+// 500 Error
 app.use((err, req, res, next) => {
     console.log(err);
+    res.status(500).sendFile(path.join(__dirname, '../client/500.html'));
+
 });
 
 // Start the server

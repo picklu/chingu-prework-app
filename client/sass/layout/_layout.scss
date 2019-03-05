@@ -56,3 +56,19 @@
         border-radius: 0 5px 5px 0;
     }
 }
+
+
+.error {
+    height: 100vh;
+    padding: 30vh;
+    text-align: center;
+    text-shadow: 0 2px 3px $color-black;
+
+    &__404 {
+        color: $color-red;
+    }
+
+    &__500 {
+        color: $color-orange;
+    }
+}

@@ -108,6 +108,16 @@ em {
     border-bottom: 2px solid #145386;
     border-radius: 0 5px 5px 0; }
 
+.error {
+  height: 100vh;
+  padding: 30vh;
+  text-align: center;
+  text-shadow: 0 2px 3px #0d074e; }
+  .error__404 {
+    color: #b30707; }
+  .error__500 {
+    color: #ee6211; }
+
 .row {
   display: flex;
   flex-wrap: wrap;
