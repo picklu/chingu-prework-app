@@ -1,7 +1,7 @@
 .header,
 .books,
 .footer {
-    color: $color-black;
+    color: darken($color-secondary, 10);
     font-size: 1.6rem;
     min-width: 300px;
     padding: 2rem $gutter-main 2rem $gutter-main;
@@ -17,6 +17,10 @@
     @include respond(phone) {
         padding: 1rem 3rem;
     }
+}
+
+.header h1 {
+    text-shadow: 0 0 2px $color-secondary;
 }
 
 .form {
@@ -49,6 +53,11 @@
         font-weight: 400;
         padding: 1.1rem 2rem;
         width: 100%;
+
+        &:focus,
+        &:active {
+            outline: none;
+        }
     }
 
     &__control--btn {

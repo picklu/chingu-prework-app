@@ -1,6 +1,6 @@
 html {
-  background-color: #18b679;
-  background: linear-gradient(to bottom, #18b679, #1a6eb3);
+  background-color: #e9e3e3ee;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #b0acac);
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: Arial, Helvetica, sans-serif;
@@ -43,27 +43,27 @@ em {
   .btn__form {
     background-color: #145386;
     border-radius: 5px;
-    color: inherit;
+    color: #e9e3e3ee;
     display: block;
     font-size: 2.5rem;
     font-weight: 600;
     padding: 1rem 2rem;
     text-transform: uppercase;
-    text-shadow: 0 0 3px #535252;
+    text-shadow: 0 0 3px #0d074e;
     margin: 0;
     transition: all .2s; }
     @media (max-width: 56.25em) {
       .btn__form {
         width: 100%; } }
     .btn__form:hover {
-      color: #ffffffee; }
+      color: #8b8585; }
     .btn__form:active {
-      color: inherit; }
+      color: #e9e3e3ee; }
 
 .header,
 .books,
 .footer {
-  color: #0d074e;
+  color: #145386;
   font-size: 1.6rem;
   min-width: 300px;
   padding: 2rem 20vw 2rem 20vw; }
@@ -82,6 +82,9 @@ em {
     .books,
     .footer {
       padding: 1rem 3rem; } }
+
+.header h1 {
+  text-shadow: 0 0 2px #1a6eb3; }
 
 .form {
   padding-top: 3rem;
@@ -104,6 +107,8 @@ em {
     font-weight: 400;
     padding: 1.1rem 2rem;
     width: 100%; }
+    .form__control--input:focus, .form__control--input:active {
+      outline: none; }
   .form__control--btn {
     border-bottom: 2px solid #145386;
     border-radius: 0 5px 5px 0; }
@@ -172,11 +177,41 @@ em {
 
 .books {
   min-height: 100vh; }
+  .books__card {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #b0acac);
+    box-shadow: 0 0 5px #0d074e;
+    border-radius: 5px;
+    color: #0d074e;
+    height: 285px;
+    width: 300px;
+    min-width: 250px;
+    margin: 0 auto;
+    position: relative;
+    transition: all .2s; }
+    .books__card:hover {
+      transform: translateY(-3px) scale(1.1); }
+      @media (max-width: 56.25em) {
+        .books__card:hover {
+          transform: translate(-2px) scale(1.05); } }
+    .books__card--image {
+      width: 150px;
+      position: relative;
+      margin: 0 auto; }
+    .books__card--description {
+      padding: 2rem;
+      height: 250; }
+      .books__card--description .card-action {
+        background-color: #0d074e;
+        border-radius: 0 5px 5px 0;
+        color: #e9e3e3ee;
+        padding: 2px 5px; }
+        .books__card--description .card-action__link {
+          font-size: 2rem; }
 
 .footer {
   background-color: #0d375a;
-  box-shadow: 0 -3px 15px #1a6eb3;
-  color: #ffffffee;
+  box-shadow: 0 -3px 15px #979292;
+  color: #e9e3e3ee;
   min-height: 5rem;
   padding-top: 5rem;
   text-align: center; }
