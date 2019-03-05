@@ -1,5 +1,8 @@
 .books {
     min-height: 100vh;
+    padding: 3rem;
+    align-items: space-between;
+    justify-content: center;
 
     &__card {
         background: linear-gradient(to  bottom, lighten($color-white, 10), lighten($color-grey, 10));
@@ -8,8 +11,7 @@
         color: $color-black;
         height: 285px;
         width: 300px;
-        min-width: 250px;
-        margin: 0 auto;
+        margin: 2rem;
         position: relative;
         transition: all .2s;
 
