@@ -58,14 +58,25 @@
     const getBooks = async(e) => {
         e.preventDefault();
         let query = inputDOM.value;
-        showDOM(spinnerDOM, true);
-        const response = await axios.get(
-            `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
-            {timeout:5000}
-        );
-        updateBooksDOM(response.data.items);
-        showDOM(spinnerDOM, false);
+
+        if (query !== "") {
+            if (!messageDOM.classList.contains("hide")) {
+                showDOM(messageDOM, false);
+            }
+            showDOM(spinnerDOM, true);
+            const response = await axios.get(
+                `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
+                {timeout:5000}
+            );
+            updateBooksDOM(response.data.items);
+            showDOM(spinnerDOM, false);
+        } else {
+            showDOM(messageDOM, true);
+        }
     };
 
     searchDOM.addEventListener("click", getBooks);
+    messageDOM.addEventListener("click", () => {
+        showDOM(messageDOM, false);
+    });
 })();

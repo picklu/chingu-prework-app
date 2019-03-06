@@ -132,6 +132,11 @@ em {
   .error__500 {
     color: #ee6211; }
 
+.hint {
+  cursor: pointer;
+  color: #b30707;
+  font-size: 1.5rem; }
+
 .hide {
   display: none; }
 

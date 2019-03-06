@@ -93,6 +93,12 @@
     }
 }
 
+.hint {
+    cursor: pointer;
+    color: $color-red;
+    font-size: 1.5rem;
+}
+
 .hide {
     display: none;
 }
