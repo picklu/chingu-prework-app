@@ -20,15 +20,16 @@
         dataArray.map((data, index, arr) => {
             let volInfo = data.volumeInfo;
             
-            coverImage = volInfo.imageLinks ? volInfo.imageLinks.thumbnail ? volInfo.imageLinks.thumbnail : "" : "";
-            title = volInfo.title ? volInfo : "Unknown";
+            coverImage = volInfo.imageLinks ? (volInfo.imageLinks.thumbnail ? 
+                volInfo.imageLinks.thumbnail : "/static/media/coverpage.jpg") : "/static/media/coverpage.jpg";
+            title = volInfo.title ? volInfo.title : "Unknown";
             author = volInfo.authors ? volInfo.authors : "Unknown";
             publisher = volInfo.publisher ? volInfo.publisher : "Unknown";
             source = volInfo.canonicalVolumeLink ? volInfo.canonicalVolumeLink : "";
 
             bookHTML += `<div class="books__card">
                 <div class="books__card--image">
-                    <img src="${ coverImage }" alt="Spinner">
+                    <img src="${ coverImage }" alt="Book Cover Page">
                 </div>
                 <div class="books__card--description">
                     <div class="book__title">
