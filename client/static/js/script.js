@@ -72,6 +72,7 @@
                 updateBooksDOM(response.data.items);
                 showDOM(spinnerDOM, false);
             } else {
+                updateBooksDOM([]);
                 showDOM(messageDOM, true);
                 showDOM(spinnerDOM, false);
             }
