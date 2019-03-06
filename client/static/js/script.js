@@ -60,16 +60,21 @@
         let query = inputDOM.value;
 
         if (query !== "") {
-            if (!messageDOM.classList.contains("hide")) {
-                showDOM(messageDOM, false);
-            }
+            showDOM(messageDOM, false);
             showDOM(spinnerDOM, true);
+
             const response = await axios.get(
                 `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
                 {timeout:5000}
             );
-            updateBooksDOM(response.data.items);
-            showDOM(spinnerDOM, false);
+
+            if (response.data.totalItems > 0) { 
+                updateBooksDOM(response.data.items);
+                showDOM(spinnerDOM, false);
+            } else {
+                showDOM(messageDOM, true);
+                showDOM(spinnerDOM, false);
+            }
         } else {
             showDOM(messageDOM, true);
         }
