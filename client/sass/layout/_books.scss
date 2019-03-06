@@ -1,5 +1,5 @@
 .books {
-    min-height: 100vh;
+    min-height: 90vh;
     padding: 3rem;
     align-items: space-between;
     justify-content: center;
@@ -9,11 +9,14 @@
         box-shadow: 0 0 5px $color-black;
         border-radius: 5px;
         color: $color-black;
-        height: 285px;
+        max-height: 350px;
         width: 300px;
         margin: 2rem;
-        position: relative;
+        padding: 0 2rem 2rem 2rem;
         transition: all .2s;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
 
         &:hover {
             transform: translateY(-3px) scale(1.1);
@@ -24,25 +27,28 @@
         }
 
         &--image {
-            width: 150px;
-            position: relative;
-            margin: 0 auto;
+            height: 160px;
+            width: 140px;
+            align-self: center;
+
+            img {
+                height: 100%;
+                width: 100%;
+            }
         }
 
         &--description {
-            padding: 2rem;
-            height: 250;
+            height: 140px;
+            padding-top: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-            .card-content {
-
-            }
-
-            .card-action {
-
+            .book__action {
                 background-color: $color-black;
-                border-radius: 0 5px 5px 0;
+                border-radius: 0 7px 7px 0;
                 color: $color-white;
-                padding: 2px 5px;
+                padding: 3px 5px;
 
                 &__link {
                     font-size: 2rem;
