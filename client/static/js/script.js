@@ -63,8 +63,8 @@
 
     // Get data using google books API and
     // update the bookDOM accordingly
-    const getBooks = async(e) => {
-        e.preventDefault();
+    const getBooks = async(event) => {
+        event.preventDefault();
         let query = inputDOM.value;
 
         // If there is a query string
