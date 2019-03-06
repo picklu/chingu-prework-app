@@ -7,12 +7,6 @@
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
 
-    const showDOM = (domObj, bool) => {
-        let classList = domObj.classList;
-        bool ? classList.remove("hide") : classList.add("hide");
-        
-    };
-
     const updateBooksDOM = dataArray => {
         let coverImage,
             title,
@@ -55,6 +49,17 @@
         booksDOM.innerHTML = bookHTML;
     };
 
+    const showDOM = (domObj, bool) => {
+        let classList = domObj.classList;
+        if (bool) {
+            classList.remove("hide");
+            updateBooksDOM(booksDOM, []);
+         } else {
+            classList.add("hide");
+         }
+        
+    };
+
     const getBooks = async(e) => {
         e.preventDefault();
         let query = inputDOM.value;
@@ -72,7 +77,6 @@
                 updateBooksDOM(response.data.items);
                 showDOM(spinnerDOM, false);
             } else {
-                updateBooksDOM([]);
                 showDOM(messageDOM, true);
                 showDOM(spinnerDOM, false);
             }
