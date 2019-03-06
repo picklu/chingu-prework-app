@@ -3,6 +3,8 @@
     const spinnerDOM = document.getElementById("spinner");
     const booksDOM = document.getElementById("books");
     const searchDOM = document.getElementById("search");
+    const apiHostURI =  "https://www.googleapis.com/books/v1/volumes";
+    const apiKey = "AIzaSyA1TwEGbJpyAQfo_XCB2iZ3QMBkjxvVgto";
 
     const showSpinner = (bool) => {
         let classList = spinnerDOM.classList;
@@ -56,7 +58,7 @@
         let query = inputDOM.value;
         showSpinner(true);
         const response = await axios.get(
-        `https://www.googleapis.com/books/v1/volumes?q=${query}=ebooks&key=AIzaSyA1TwEGbJpyAQfo_XCB2iZ3QMBkjxvVgto`,
+        `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
             {timeout:5000}
         );
         updateBooksDOM(response.data.items);
