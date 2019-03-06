@@ -8,7 +8,7 @@
         background: linear-gradient(to  bottom, lighten($color-white, 10), lighten($color-grey, 10));
         box-shadow: 0 0 5px $color-black;
         border-radius: 5px;
-        color: $color-black;
+        color: darken($color-secondary, 10);
         max-height: 350px;
         width: 300px;
         margin: 2rem;
@@ -45,7 +45,7 @@
             justify-content: space-between;
 
             .book__action {
-                background-color: $color-black;
+                background-color: darken($color-secondary, 10);
                 border-radius: 0 7px 7px 0;
                 color: $color-white;
                 padding: 3px 5px;

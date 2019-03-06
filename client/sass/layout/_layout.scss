@@ -1,7 +1,7 @@
 .header,
 .books,
 .footer {
-    color: ($color-secondary, 10);
+    color: darken($color-secondary, 10);
     font-size: 1.6rem;
     min-width: 300px;
     padding: 2rem $gutter-main 2rem $gutter-main;
