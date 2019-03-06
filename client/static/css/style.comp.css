@@ -227,9 +227,8 @@ em {
         background-color: #145386;
         border-radius: 0 7px 7px 0;
         color: #e9e3e3ee;
-        padding: 3px 5px; }
-        .books__card--description .book__action__link {
-          font-size: 1.8rem; }
+        padding: 3px 5px;
+        font-size: 1.8rem; }
 
 .footer {
   background-color: #0d375a;

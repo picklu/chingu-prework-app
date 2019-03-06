@@ -29,11 +29,11 @@
             publisher = volInfo.publisher ? volInfo.publisher : "Unknown";
             source = volInfo.canonicalVolumeLink ? volInfo.canonicalVolumeLink : "";
 
-            bookHTML += `<div class="books__card">
+            bookHTML += `<iv class="books__card">
                 <div class="books__card--image">
                     <img src="${ coverImage }" alt="Book Cover Page">
                 </div>
-                <div class="books__card--description">
+                <iv class="books__card--description">
                     <div class="book__title">
                         <h3>${ title }</h3>
                     </div>
@@ -43,11 +43,11 @@
                     <div class="book__publisher">
                         <p><strong>Publisher:</strong> ${ publisher }</p>
                     </div>
-                    <div class="book__action">
-                        <a class="book__action--link"  href="${ source }" target="_blank" rel="noopener noreferrer">See the Book</a>
-                    </div>
-                </div>
-            </div>`;
+                    <a href="${ source }" target="_blank" rel="noopener noreferrer">
+                        <p class="book__action">See the Book</p>
+                    </a>
+                </iv>
+            </iv>`;
         });
 
         booksDOM.innerHTML = bookHTML;
