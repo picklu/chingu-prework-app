@@ -9,7 +9,7 @@
         bool ? classList.remove("hide") : classList.add("hide");
     };
 
-    const updateDOM = (dataArray) => {
+    const updateBooksDOM = (dataArray) => {
         let coverImage,
             title,
             author,
@@ -59,7 +59,7 @@
         `https://www.googleapis.com/books/v1/volumes?q=${query}=ebooks&key=AIzaSyA1TwEGbJpyAQfo_XCB2iZ3QMBkjxvVgto`,
             {timeout:5000}
         );
-        updateDOM(response.data.items);
+        updateBooksDOM(response.data.items);
         showSpinner(false);
     };
 
