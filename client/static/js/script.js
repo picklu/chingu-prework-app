@@ -7,6 +7,7 @@
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
 
+    // Update bookDOM with the data available in the dataArray
     const updateBooksDOM = dataArray => {
         let coverImage,
             title,
@@ -49,6 +50,7 @@
         booksDOM.innerHTML = bookHTML;
     };
 
+    // Show/hide a DOM
     const showDOM = (domObj, bool) => {
         let classList = domObj.classList;
         if (bool) {
@@ -57,13 +59,15 @@
          } else {
             classList.add("hide");
          }
-        
     };
 
+    // Get data using google books API and
+    // update the bookDOM accordingly
     const getBooks = async(e) => {
         e.preventDefault();
         let query = inputDOM.value;
 
+        // If there is a query string
         if (query !== "") {
             showDOM(messageDOM, false);
             showDOM(spinnerDOM, true);
@@ -73,20 +77,23 @@
                 {timeout:5000}
             );
 
+            // If the query returns proper data
             if (response.data.totalItems > 0) { 
                 updateBooksDOM(response.data.items);
                 showDOM(spinnerDOM, false);
+                // invalid data; show message
             } else {
                 showDOM(messageDOM, true);
                 showDOM(spinnerDOM, false);
             }
+            // empty query string; show message
         } else {
             showDOM(messageDOM, true);
         }
     };
 
+    // Add event listener for search button
     searchDOM.addEventListener("click", getBooks);
-    messageDOM.addEventListener("click", () => {
-        showDOM(messageDOM, false);
-    });
+    // Add event listener for the message text
+    messageDOM.addEventListener("click", () => showDOM(messageDOM, false));
 })();
