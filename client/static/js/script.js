@@ -3,25 +3,27 @@
     const spinnerDOM = document.getElementById("spinner");
     const booksDOM = document.getElementById("books");
     const searchDOM = document.getElementById("search");
-    const apiHostURI =  "https://www.googleapis.com/books/v1/volumes";
+    const messageDOM = document.getElementById("message");
+    const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyA1TwEGbJpyAQfo_XCB2iZ3QMBkjxvVgto";
 
-    const showSpinner = (bool) => {
-        let classList = spinnerDOM.classList;
+    const showDOM = (domObj, bool) => {
+        let classList = domObj.classList;
         bool ? classList.remove("hide") : classList.add("hide");
+        
     };
 
-    const updateBooksDOM = (dataArray) => {
+    const updateBooksDOM = dataArray => {
         let coverImage,
             title,
             author,
             publisher,
-            source;
+            source,
+            volInfo;
         let bookHTML = "";
 
         dataArray.map((data, index, arr) => {
-            let volInfo = data.volumeInfo;
-            
+            volInfo = data.volumeInfo;
             coverImage = volInfo.imageLinks ? (volInfo.imageLinks.thumbnail ? 
                 volInfo.imageLinks.thumbnail : "/static/media/coverpage.jpg") : "/static/media/coverpage.jpg";
             title = volInfo.title ? volInfo.title : "Unknown";
@@ -56,13 +58,13 @@
     const getBooks = async(e) => {
         e.preventDefault();
         let query = inputDOM.value;
-        showSpinner(true);
+        showDOM(spinnerDOM, true);
         const response = await axios.get(
-        `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
+            `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
             {timeout:5000}
         );
         updateBooksDOM(response.data.items);
-        showSpinner(false);
+        showDOM(spinnerDOM, false);
     };
 
     searchDOM.addEventListener("click", getBooks);
