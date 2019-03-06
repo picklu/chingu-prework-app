@@ -5,7 +5,7 @@
     const searchDOM = document.getElementById("search");
     const messageDOM = document.getElementById("message");
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
-    const apiKey = "AIzaSyA1TwEGbJpyAQfo_XCB2iZ3QMBkjxvVgto";
+    const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
 
     const showDOM = (domObj, bool) => {
         let classList = domObj.classList;
