@@ -48,7 +48,7 @@ app.use('/api', routes);
 
 // 404 Error
 app.use((req, res, next) => {
-    console.log('File or directory:', req.url, 'not foud!');
+    console.log('File or directory:', req.url, 'not found!');
     res.status(404).sendFile(path.join(__dirname, '../client/404.html'));
 });
 
