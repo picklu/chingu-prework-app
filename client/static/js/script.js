@@ -53,7 +53,7 @@
         let classList = domObj.classList;
         if (bool) {
             classList.remove("hide");
-            updateBooksDOM(booksDOM, []);
+            updateBooksDOM([]);
          } else {
             classList.add("hide");
          }
