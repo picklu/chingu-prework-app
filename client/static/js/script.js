@@ -88,7 +88,6 @@
     // update the bookDOM accordingly
     const getBooks = event => {
         event.preventDefault();
-        let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
         let query = inputDOM.value;
         let response;
 
@@ -100,6 +99,7 @@
             showDOM(messageDOM, false);
             showDOM(spinnerDOM, true);
 
+            let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
             axios.get(url)
                 .then(data => response = data)
                 .catch(error => {
