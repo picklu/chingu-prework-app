@@ -101,7 +101,7 @@
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
             const response = await axios.get(
-                url, { timeout: 50 }).catch(error => {
+                url, { timeout: 2000 }).catch(error => {
                     messageDOM.innerText = errorMessage;
                     timeoutoutError = true;
                     }
