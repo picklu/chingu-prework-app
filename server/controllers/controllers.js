@@ -20,6 +20,20 @@ controller.addBooks = (req, res, next) => {
     }
 };
 
+controller.getStat = (req, res, next) => {
+    books.find({})
+        .then(data => {
+            let newData = {
+                total: data.length,
+                found: data.reduce((acc, curr) => {
+                    return curr.count > 0 ? acc + 1 : acc;
+                }, 0)
+            };
+            res.json(newData);
+        })
+        .catch(next);
+};
+
 controller.resetBooks = (req, res, next) => {
     books.deleteMany({})
         .then(data => res.json(data))

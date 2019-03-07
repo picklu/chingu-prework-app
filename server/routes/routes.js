@@ -13,6 +13,9 @@ router.route('/get').get(controller.getBooks);
 // For adding a new book
 router.route('/add').post(controller.addBooks);
 
+// For stat
+router.route('/getstat').get(controller.getStat);
+
 // For resetting the books collection
 router.route('/reset').post(controller.resetBooks);
 

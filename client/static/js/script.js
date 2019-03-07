@@ -4,8 +4,29 @@
     const booksDOM = document.getElementById("books");
     const searchDOM = document.getElementById("search");
     const messageDOM = document.getElementById("message");
+    const statDOM = document.getElementById("stat");
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
+
+    // Update statDOM
+    const updateStatDOM = dataObj => {
+        if (dataObj) {
+            statDOM.innerHTML = `<p>Searched: ${dataObj.total} | Returned: ${dataObj.found}</p>`;
+        }
+    };
+
+    // Get data from local API
+    const getDataFromLocalAPI = async() => {
+        const response = await axios.get("/api/getstat", { timeout: 5000});
+        updateStatDOM(response.data);
+    };
+
+    // Post data to local API
+    const postDataToLocalAPI = dataObj => {
+        axios.post("/api/add", dataObj)
+            // .then(res => console.log("Local API =>", res))
+            .catch(error => console.log("Local API =>", error));
+    };
 
     // Update bookDOM with the data available in the dataArray
     const updateBooksDOM = dataArray => {
@@ -77,8 +98,15 @@
                 {timeout:5000}
             );
 
+            // Post data to local API
+            const postData = {
+                book: query,
+                count: response.data.totalItems
+            };
+            postDataToLocalAPI(postData);
+
             // If the query returns proper data
-            if (response.data.totalItems > 0) { 
+            if (postData.count > 0) { 
                 updateBooksDOM(response.data.items);
                 showDOM(spinnerDOM, false);
                 // invalid data; show message
@@ -86,11 +114,17 @@
                 showDOM(messageDOM, true);
                 showDOM(spinnerDOM, false);
             }
+            // Update statDOM with data from local API
+            getDataFromLocalAPI();
+
             // empty query string; show message
         } else {
             showDOM(messageDOM, true);
         }
     };
+
+    // Get data from local API call
+    getDataFromLocalAPI();
 
     // Add event listener for search button
     searchDOM.addEventListener("click", getBooks);
