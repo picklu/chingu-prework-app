@@ -95,8 +95,10 @@
 
             const response = await axios.get(
                 `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
-                {timeout:5000}
-            );
+                {timeout:50}
+            ).catch(error => {
+                console.log("There was something wrong fetching data. Error =>", error);
+            });
 
             // Post data to local API
             const postData = {
