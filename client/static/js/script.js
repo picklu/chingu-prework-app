@@ -86,10 +86,9 @@
 
     // Get data using google books API and
     // update the bookDOM accordingly
-    const getBooks = event => {
+    const getBooks = async(event) => {
         event.preventDefault();
         let query = inputDOM.value;
-        let response;
 
         // Update text in the message
         messageDOM.innerText = warningMessage;
@@ -100,8 +99,7 @@
             showDOM(spinnerDOM, true);
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
-            axios.get(url)
-                .then(boooksData => response = boooksData)
+            const response = await axios.get(url, { time: 50})
                 .catch(error => {
                     messageDOM.innerText = errorMessage;
                     showDOM(messageDOM, true);
