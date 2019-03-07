@@ -5,6 +5,8 @@
     const searchDOM = document.getElementById("search");
     const messageDOM = document.getElementById("message");
     const statDOM = document.getElementById("stat");
+    const errorMessage = "Took too long...";
+    const warningMessage = "Please enter a valid author or book name.";
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
 
@@ -84,21 +86,27 @@
 
     // Get data using google books API and
     // update the bookDOM accordingly
-    const getBooks = async(event) => {
+    const getBooks = event => {
         event.preventDefault();
+        let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
         let query = inputDOM.value;
+        let response;
+
+        // Update text in the message
+        messageDOM.innerText = warningMessage;
 
         // If there is a query string
         if (query !== "") {
             showDOM(messageDOM, false);
             showDOM(spinnerDOM, true);
 
-            const response = await axios.get(
-                `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`,
-                {timeout:50}
-            ).catch(error => {
-                console.log("There was something wrong fetching data. Error =>", error);
-            });
+            axios.get(url)
+                .then(data => response = data)
+                .catch(error => {
+                    messageDOM.innerText = errorMessage;
+                    showDOM(messageDOM, true);
+                    showDOM(spinnerDOM, false);
+                });
 
             // Post data to local API
             const postData = {
