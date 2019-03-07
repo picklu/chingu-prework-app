@@ -89,6 +89,7 @@
     const getBooks = async(event) => {
         event.preventDefault();
         let query = inputDOM.value;
+        let timeoutoutError = false;
 
         // Update text in the message
         messageDOM.innerText = warningMessage;
@@ -99,31 +100,39 @@
             showDOM(spinnerDOM, true);
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
-            const response = await axios.get(url, { timeout: 50 })
-                .catch(error => {
+            const response = await axios.get(
+                url, { timeout: 50 }).catch(error => {
                     messageDOM.innerText = errorMessage;
+                    timeoutoutError = true;
+                    }
+                );
+            
+            // If not timeout
+            if (!timeoutoutError) { 
+                // Post data to local API
+                const postData = {
+                    book: query,
+                    count: response.data.totalItems
+                };
+                postDataToLocalAPI(postData);
+
+                // If the query returns proper data
+                if (postData.count > 0) { 
+                    updateBooksDOM(response.data.items);
+                    showDOM(spinnerDOM, false);
+                    // invalid data; show message
+                } else {
                     showDOM(messageDOM, true);
                     showDOM(spinnerDOM, false);
-                });
+                }
+                // Update statDOM with data from local API
+                getDataFromLocalAPI();
 
-            // Post data to local API
-            const postData = {
-                book: query,
-                count: response.data.totalItems
-            };
-            postDataToLocalAPI(postData);
-
-            // If the query returns proper data
-            if (postData.count > 0) { 
-                updateBooksDOM(response.data.items);
-                showDOM(spinnerDOM, false);
-                // invalid data; show message
+                // Timeout error
             } else {
-                showDOM(messageDOM, true);
-                showDOM(spinnerDOM, false);
+                    showDOM(messageDOM, true);
+                    showDOM(spinnerDOM, false);
             }
-            // Update statDOM with data from local API
-            getDataFromLocalAPI();
 
             // empty query string; show message
         } else {
