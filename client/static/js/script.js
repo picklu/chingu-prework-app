@@ -99,7 +99,7 @@
             showDOM(spinnerDOM, true);
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
-            const response = await axios.get(url, { time: 50})
+            const response = await axios.get(url, { timeout: 50 })
                 .catch(error => {
                     messageDOM.innerText = errorMessage;
                     showDOM(messageDOM, true);
