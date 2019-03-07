@@ -2,8 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
-const routes = require('./routes/routes');
 const path = require('path');
+const routes = require('./routes/routes');
+const helper = require('./helpers/helper');
 
 require('dotenv').config();
 
@@ -42,6 +43,9 @@ app.use('/static', express.static(path.join(__dirname, '../client/static')));
 app.get('/', (req, res, next) => {
     res.sendFile(path.join(__dirname, '../client/index.html'));
 });
+
+// Ignore favicon.ico
+app.use(helper.ignoreFavicon);
 
 // Set the api routes
 app.use('/api', routes);
