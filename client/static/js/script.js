@@ -101,7 +101,7 @@
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
             axios.get(url)
-                .then(data => response = data)
+                .then(data => console.log(data))
                 .catch(error => {
                     messageDOM.innerText = errorMessage;
                     showDOM(messageDOM, true);
