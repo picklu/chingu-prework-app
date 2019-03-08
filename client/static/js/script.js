@@ -99,7 +99,7 @@
             showDOM(messageDOM, false);
             showDOM(spinnerDOM, true);
 
-            let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }`;
+            let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }&maxResults=20`;
             const response = await axios.get(
                 url, { timeout: 2000 }).catch(error => {
                     messageDOM.innerText = errorMessage;
