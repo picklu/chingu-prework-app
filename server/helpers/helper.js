@@ -12,9 +12,10 @@ helper.ignoreFavicon = (req, res, next) => {
 
 helper.renderFavicon = (req, res, next) => {
     if (req.originalUrl === '/favicon.ico') {
-        req.sendFile(path.join(__dirname, '../../client/static/media/favicon.ico');
+        req.status(200).sendFile(path.join(__dirname, '../../client/static/media/favicon.ico'));
     } else {
         next();
     }
+}
 
 module.exports = helper;
