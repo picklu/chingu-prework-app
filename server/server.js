@@ -45,7 +45,7 @@ app.get('/', (req, res, next) => {
 });
 
 // Ignore favicon.ico
-app.use(helper.ignoreFavicon);
+app.use(helper.renderFavicon);
 
 // Set the api routes
 app.use('/api', routes);
