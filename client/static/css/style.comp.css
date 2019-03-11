@@ -1,6 +1,6 @@
 html {
   background-color: #e9e3e3ee;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #b0acac);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #6f6c6c);
   box-sizing: border-box;
   font-size: 62.5%;
   font-family: Arial, Helvetica, sans-serif;
@@ -50,14 +50,14 @@ em {
     height: 100%;
     padding: 0 3rem;
     text-transform: uppercase;
-    text-shadow: 0 0 3px #0d074e;
+    text-shadow: 0 0 3px #07074e;
     margin: 0;
     transition: all .2s; }
     @media (max-width: 56.25em) {
       .btn__form {
         width: 100%; } }
     .btn__form:hover {
-      color: #8b8585; }
+      color: #484646; }
     .btn__form:active {
       color: #e9e3e3ee; }
 
@@ -100,7 +100,7 @@ em {
   padding-bottom: 2rem; }
   .form__row {
     border-radius: 5px;
-    box-shadow: 0 1px 2px #0d074e;
+    box-shadow: 0 1px 2px #07074e;
     display: flex;
     flex-wrap: wrap; }
   .form__group {
@@ -126,7 +126,7 @@ em {
   height: 100vh;
   padding: 30vh;
   text-align: center;
-  text-shadow: 0 2px 3px #0d074e; }
+  text-shadow: 0 2px 3px #07074e; }
   .error__404 {
     color: #b30707; }
   .error__500 {
@@ -198,8 +198,8 @@ em {
   align-items: space-between;
   justify-content: center; }
   .books__card {
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #b0acac);
-    box-shadow: 0 0 5px #0d074e;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.933333), #6f6c6c);
+    box-shadow: 0 0 5px #07074e;
     border-radius: 5px;
     color: #145386;
     max-height: 350px;
@@ -237,7 +237,7 @@ em {
 
 .footer {
   background-color: #0d375a;
-  box-shadow: 0 -3px 15px #979292;
+  box-shadow: 0 -3px 15px #555353;
   color: #e9e3e3ee;
   min-height: 5rem;
   padding-top: 5rem;
@@ -260,11 +260,11 @@ em {
     font-size: 1.5rem; }
 
 .stat {
-  background: #0d074e;
-  border-radius: 0 0 10px 10px;
+  background: rgba(7, 7, 78, 0.7);
+  border-radius: 0 0 5px 5px;
   color: #e9e3e3ee;
-  font-size: 1.5rem;
-  padding: 5px 10px;
+  font-size: 1.2rem;
+  padding: 3px 10px;
   position: fixed;
   top: 0;
   right: 0; }
