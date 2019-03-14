@@ -10,6 +10,11 @@
     const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
     const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
 
+    // Beautify text
+    const beautifyText = text => {
+        return (text.length > 50) ? text.slice(0, 50) + '...' : text
+    };
+
     // Update statDOM
     const updateStatDOM = dataObj => {
         if (dataObj) {
@@ -55,13 +60,13 @@
                 </div>
                 <iv class="books__card--description">
                     <div class="book__title">
-                        <h3>${ title }</h3>
+                        <h3>${ beautifyText(title) }</h3>
                     </div>
                     <div class="book__by">
                         <p><strong>By:</strong> ${ author }</p>
                     </div>
                     <div class="book__publisher">
-                        <p><strong>Publisher:</strong> ${ publisher }</p>
+                        <p><strong>Publisher:</strong> ${ beautifyText(publisher) }</p>
                     </div>
                     <a href="${ source }" target="_blank" rel="noopener noreferrer">
                         <p class="book__action">See the Book</p>
