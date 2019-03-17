@@ -1,42 +1,39 @@
-(() => {
-    const inputDOM = document.getElementById("query");
-    const spinnerDOM = document.getElementById("spinner");
-    const booksDOM = document.getElementById("books");
-    const searchDOM = document.getElementById("search");
-    const messageDOM = document.getElementById("message");
-    const statDOM = document.getElementById("stat");
-    const errorMessage = "Took too long...";
-    const warningMessage = "Please enter a valid author or book name.";
-    const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
-    const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
+const domController = (() => {
+
+    const domObjects = {
+        inputDOM: document.getElementById("query"),
+        spinnerDOM: document.getElementById("spinner"),
+        booksDOM: document.getElementById("books"),
+        searchDOM: document.getElementById("search"),
+        messageDOM: document.getElementById("message"),
+        statDOM: document.getElementById("stat"),
+    };
 
     // Beautify text
-    const beautifyText = text => {
-        return (text.length > 50) ? text.slice(0, 50) + '...' : text
-    };
+    function beautifyText(text) {
+        return (text.length > 50) ? text.slice(0, 50) + '...' : text;
+    }
+
+    // Show/hide a DOM
+    function showDOM(domObj, bool) {
+        let classList = domObj.classList;
+        if (bool) {
+            classList.remove("hide");
+            updateBooksDOM([]);
+         } else {
+            classList.add("hide");
+         }
+    }
 
     // Update statDOM
-    const updateStatDOM = dataObj => {
+    function updateStatDOM(dataObj) {
         if (dataObj) {
-            statDOM.innerHTML = `<p>Searched: ${dataObj.total} | Returned: ${dataObj.found}</p>`;
+            domObjects.statDOM.innerHTML = `<p>Searched: ${dataObj.total} | Returned: ${dataObj.found}</p>`;
         }
-    };
-
-    // Get data from local API
-    const getDataFromLocalAPI = async() => {
-        const response = await axios.get("/api/getstat", { timeout: 5000});
-        updateStatDOM(response.data);
-    };
-
-    // Post data to local API
-    const postDataToLocalAPI = dataObj => {
-        axios.post("/api/add", dataObj)
-            // .then(res => console.log("Local API =>", res))
-            .catch(error => console.log("Local API =>", error));
-    };
+    }
 
     // Update bookDOM with the data available in the dataArray
-    const updateBooksDOM = dataArray => {
+    function updateBooksDOM(dataArray) {
         let coverImage,
             title,
             author,
@@ -75,42 +72,58 @@
             </iv>`;
         });
 
-        booksDOM.innerHTML = bookHTML;
+        domObjects.booksDOM.innerHTML = bookHTML;
+    }
+
+    return {
+        doms: domObjects,
+        showDOM: showDOM,
+        updateBooksDOM: updateBooksDOM,
+        updateStatDOM: updateStatDOM
+    };
+})();
+
+const apiController = (() => {
+
+    const errorMessage = "Took too long...";
+    const warningMessage = "Please enter a valid author or book name.";
+    const apiHostURI = "https://www.googleapis.com/books/v1/volumes";
+    const apiKey = "AIzaSyCxHmYJG-z2_Aavm4ML57xSbaSYGzxJNcY";
+
+   // Get data from local API
+    const getDataFromLocalAPI = async() => {
+        const response = await axios.get("/api/getstat", { timeout: 5000});
+        domController.updateStatDOM(response.data);
     };
 
-    // Show/hide a DOM
-    const showDOM = (domObj, bool) => {
-        let classList = domObj.classList;
-        if (bool) {
-            classList.remove("hide");
-            updateBooksDOM([]);
-         } else {
-            classList.add("hide");
-         }
+    // Post data to local API
+    const postDataToLocalAPI = dataObj => {
+        axios.post("/api/add", dataObj)
+            .catch(error => console.log("Local API =>", error));
     };
 
     // Get data using google books API and
     // update the bookDOM accordingly
     const getBooks = async(event) => {
         event.preventDefault();
-        let query = inputDOM.value;
+        let query = domController.doms.inputDOM.value;
         let timeoutoutError = false;
 
         // Update text in the message
-        messageDOM.innerText = warningMessage;
+        domController.doms.messageDOM.innerText = warningMessage;
 
         // If there is a query string
         if (query !== "") {
-            showDOM(messageDOM, false);
-            showDOM(spinnerDOM, true);
+            domController.showDOM(domController.doms.messageDOM, false);
+            domController.showDOM(domController.doms.spinnerDOM, true);
 
             let url = `${ apiHostURI }?q=${ query }=ebooks&key=${ apiKey }&maxResults=20`;
             const response = await axios.get(
                 url, { timeout: 2000 }).catch(error => {
-                    messageDOM.innerText = errorMessage;
+                    domController.doms.messageDOM.innerText = errorMessage;
                     timeoutoutError = true;
-                    }
-                );
+                }
+            );
             
             // If not timeout
             if (!timeoutoutError) { 
@@ -123,33 +136,49 @@
 
                 // If the query returns proper data
                 if (postData.count > 0) { 
-                    updateBooksDOM(response.data.items);
-                    showDOM(spinnerDOM, false);
+                    domController.updateBooksDOM(response.data.items);
+                    domController.showDOM(domController.doms.spinnerDOM, false);
                     // invalid data; show message
                 } else {
-                    showDOM(messageDOM, true);
-                    showDOM(spinnerDOM, false);
+                    domController.showDOM(domController.doms.messageDOM, true);
+                    domController.showDOM(domController.doms.spinnerDOM, false);
                 }
                 // Update statDOM with data from local API
                 getDataFromLocalAPI();
 
                 // Timeout error
             } else {
-                    showDOM(messageDOM, true);
-                    showDOM(spinnerDOM, false);
+                    domController.showDOM(domController.doms.messageDOM, true);
+                    domController.showDOM(domController.doms.spinnerDOM, false);
             }
 
             // empty query string; show message
         } else {
-            showDOM(messageDOM, true);
+            domController.showDOM(domController.doms.messageDOM, true);
         }
     };
 
-    // Get data from local API call
-    getDataFromLocalAPI();
-
-    // Add event listener for search button
-    searchDOM.addEventListener("click", getBooks);
-    // Add event listener for the message text
-    messageDOM.addEventListener("click", () => showDOM(messageDOM, false));
+    return {
+        getBooks: getBooks,
+        getDataFromLocalAPI: getDataFromLocalAPI
+    };
 })();
+
+const appController = (() => {
+
+    return {
+        init: () => {
+            // Get data from local API call
+            apiController.getDataFromLocalAPI();
+
+            // Add event listener for search button
+            domController.doms.searchDOM.addEventListener("click", apiController.getBooks);
+
+            // Add event listener for the message text
+            domController.doms.messageDOM.addEventListener("click", () => domController.showDOM(domController.doms.messageDOM, false));
+        }
+    };
+})();
+
+// Initialize app
+appController.init();
