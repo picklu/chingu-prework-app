@@ -1,0 +1,7 @@
+{
+  "name": "Chingu Book Finder",
+  "description": "A prework app for chingu cohort 8",
+  "repository": "https://github.com/heroku/chingu-prework-app",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
+}
