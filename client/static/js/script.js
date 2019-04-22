@@ -34,6 +34,7 @@ const domController = (() => {
 
     // Update bookDOM with the data available in the dataArray
     function updateBooksDOM(dataArray) {
+		const dummyCoverpage = "/static/media/coverpage.jpg";
         let coverImage,
             title,
             author,
@@ -45,7 +46,7 @@ const domController = (() => {
         dataArray.map((data, index, arr) => {
             volInfo = data.volumeInfo;
             coverImage = volInfo.imageLinks ? (volInfo.imageLinks.thumbnail ? 
-                volInfo.imageLinks.thumbnail : "/static/media/coverpage.jpg") : "/static/media/coverpage.jpg";
+                volInfo.imageLinks.thumbnail : dummyCoverpage) : dummyCoverpage;
             title = volInfo.title ? volInfo.title : "Unknown";
             author = volInfo.authors ? volInfo.authors : "Unknown";
             publisher = volInfo.publisher ? volInfo.publisher : "Unknown";
