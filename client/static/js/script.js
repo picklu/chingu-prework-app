@@ -51,11 +51,11 @@ const domController = (() => {
             publisher = volInfo.publisher ? volInfo.publisher : "Unknown";
             source = volInfo.canonicalVolumeLink ? volInfo.canonicalVolumeLink : "";
 
-            bookHTML += `<iv class="books__card">
+            bookHTML += `<div class="books__card">
                 <div class="books__card--image">
                     <img src="${ coverImage }" alt="Book Cover Page">
                 </div>
-                <iv class="books__card--description">
+                <div class="books__card--description">
                     <div class="book__title">
                         <h3>${ beautifyText(title) }</h3>
                     </div>
@@ -68,8 +68,8 @@ const domController = (() => {
                     <a href="${ source }" target="_blank" rel="noopener noreferrer">
                         <p class="book__action">See the Book</p>
                     </a>
-                </iv>
-            </iv>`;
+                </div>
+            </div>`;
         });
 
         domObjects.booksDOM.innerHTML = bookHTML;
