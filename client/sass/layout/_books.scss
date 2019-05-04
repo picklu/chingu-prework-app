@@ -5,7 +5,7 @@
     justify-content: center;
 
     &__card {
-        background: linear-gradient(to  bottom, lighten($color-white, 10), lighten($color-grey, 10));
+        background: linear-gradient(to  bottom, $color-white, darken($color-white, 10));
         box-shadow: 0 0 5px $color-black;
         border-radius: 5px;
         color: darken($color-secondary, 10);
